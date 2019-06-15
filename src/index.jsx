@@ -7,26 +7,17 @@ import ReactDom from 'react-dom';
 import { Profile } from './components/Profile';
 import { Gallery } from './components/Gallery';
 import { LoadIndication } from './components/LoadIndication';
-// import { pictures } from './pictures';
+import { pictures } from './pictures';
 
 class App extends Component {
     render() {
-        // <main>
-        //         <div className="container">
-        //             <div className="gallery">
-        //                 {
-        //                     pictures.map((picture, idx) => <ImageBox key={idx} {...picture} />)
-        //                 }
-        //             </div>
-        //         </div>
-        //     </main>
         return (
             <div className="container">
                 <header>
                     <Profile />
                 </header>
                 <main>
-                    <Gallery />
+                    <Gallery pictures={pictures} />
                     <LoadIndication />
                 </main>
             </div>
