@@ -8,13 +8,14 @@ import { Profile } from './components/Profile';
 import { Gallery } from './components/Gallery';
 import { LoadIndication } from './components/LoadIndication';
 import { pictures } from './pictures';
+import { profile } from './profile';
 
 class App extends Component {
     render() {
         return (
             <div className="container">
                 <header>
-                    <Profile />
+                    <Profile profile={profile}/>
                 </header>
                 <main>
                     <Gallery pictures={pictures} />

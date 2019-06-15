@@ -1,33 +1,32 @@
 import './Profile.scss';
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { ProfileImage } from './ProfileImage';
+import { ProfileSettings } from './ProfileSettings';
+import { ProfileStatistics } from './ProfileStatistics';
+import { ProfileBio } from './ProfileBio';
 
 export class Profile extends Component {
     render() {
+        const { profile } = this.props;
         return (
             <div className="profile">
-                <div className="profile-image">
-                    <img src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-                        alt="" />
-                </div>
-                <div className="profile-user-settings">
-                    <h1 className="profile-user-name">janedoe_</h1>
-                    <button className="btn profile-edit-btn">Edit Profile</button>
-                    <button className="btn profile-settings-btn" aria-label="profile settings"><i className="fas fa-cog"
-                        aria-hidden="true"></i></button>
-                </div>
-                <div className="profile-stats">
-                    <ul>
-                        <li><span className="profile-stat-count">164</span> posts</li>
-                        <li><span className="profile-stat-count">188</span> followers</li>
-                        <li><span className="profile-stat-count">206</span> following</li>
-                    </ul>
-                </div>
-                <div className="profile-bio">
-                    <p><span className="profile-real-name">Jane Doe</span> Lorem ipsum dolor sit, amet consectetur adipisicing elit
-            📷✈️🏕️</p>
-                </div>
+                <ProfileImage image={profile.image} />
+                <ProfileSettings username={profile.username} />
+                <ProfileStatistics
+                posts={profile.statistics.posts}
+                followers={profile.statistics.followers}
+                following={profile.statistics.following} />
+                <ProfileBio 
+                name={profile.name} 
+                description={profile.description} />
             </div>
         )
     }
+}
+
+Profile.propTypes = {
+    profile: PropTypes.object
 }

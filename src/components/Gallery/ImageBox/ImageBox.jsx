@@ -3,6 +3,7 @@ import './ImageBox.scss';
 import React, { Component } from 'react';
 
 import { CommentsCounter } from './CommentsCounter';
+import { LikesCounter } from './LikesCounter';
 
 export class ImageBox extends Component {
     render() {
@@ -23,8 +24,7 @@ export class ImageBox extends Component {
                 */}
                 <div className="gallery-item-info">
                     <ul>
-                        <li className="gallery-item-likes"><span className="visually-hidden">Likes:</span><i className="fas fa-heart"
-                            aria-hidden="true"></i> {likes}</li>
+                        <LikesCounter likes={likes} />
                         <CommentsCounter comments={comments} />
                     </ul>
                 </div>
