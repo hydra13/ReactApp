@@ -2,8 +2,8 @@ import './ImageBox.scss';
 
 import React, { Component } from 'react';
 
-import { CommentsCounter } from './CommentsCounter';
-import { LikesCounter } from './LikesCounter';
+import { CommentsCounter } from 'components/CommentsCounter';
+import { LikesCounter } from 'components/LikesCounter';
 
 export class ImageBox extends Component {
     render() {
