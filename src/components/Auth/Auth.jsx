@@ -38,10 +38,10 @@ export class Auth extends Component {
         const { username, password } = this.state;
         return (
             <div className="container sign-in-form">
-                <img url="./assets/img/hydragram.png" />
-                <input type="text" name="username" onChange={this.handleChangeInput} value={username}></input> <br />
-                <input type="password" name="password" onChange={this.handleChangeInput} value={password}></input> <br />
-                <button name="submit" onClick={this.handleSighIn} >Sign In</button>
+                <h1 className="logo">Instagram</h1>
+                <input type="text" name="username" id="username" onChange={this.handleChangeInput} value={username}></input> <br />
+                <input type="password" name="password" id="password" onChange={this.handleChangeInput} value={password}></input> <br />
+                <button id="submit-btn" name="submit" onClick={this.handleSighIn} >Sign In</button>
             </div>
         )
     }
