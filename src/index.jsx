@@ -5,16 +5,24 @@ import ReactDom from 'react-dom';
 
 import { Auth } from "components/Auth";
 import { Profile } from 'components/Profile';
-import { Gallery } from 'components/Gallery';
-import { LoadIndication } from 'components/LoadIndication';
+import { GalleryContainer } from 'containers/GalleryContainer';
 
 import { profile } from './profile';
 
 class App extends Component {
-    state = { token: null, user: null }
+    state = { token: localStorage.getItem('token'), user: null }
 
     handleSaveDataFromServer = ({ token, user }) => {
-        this.setState({ token, user });
+        this.setState({ token, user }, () => {
+            localStorage.setItem('token', token);
+        });
+    }
+
+    handleSignOut = (event) => {
+        this.setState({ token: '' }, () => {
+            localStorage.setItem('token', null);
+        });
+        event.preventDefaule();
     }
 
     render() {
@@ -27,8 +35,7 @@ class App extends Component {
                         <Profile profile={profile} />
                     </header>
                     <main>
-                        <Gallery token={token} />
-                        <LoadIndication />
+                        <GalleryContainer token={token} />
                     </main>
                 </div>}
             </Fragment>
