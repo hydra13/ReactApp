@@ -1,22 +1,43 @@
 import './Gallery.scss';
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 
-import { ImageBox } from './ImageBox'
+import { ImageBox } from 'components/ImageBox'
 
-export class Gallery extends Component {
-    render() {
+export function Gallery(props) {
+    const { pictures, renderItem, onScroll } = props;
+
+    const isNotEndPage = () => {
+        return Math.floor(window.innerHeight + document.documentElement.scrollTop) !== document.documentElement.offsetHeight;
+    }
+
+    const handleScroll = () => {
+        if (isNotEndPage()) {
+            return;
+        }
+
+        if (typeof onScroll === 'function') {
+            onScroll();
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [])
+
+    const renderItemDefault = (picture) => {
         return (
-            <div className="gallery">
-                {
-                    this.props.pictures.map((picture, idx) => <ImageBox key={idx} {...picture} />)
-                }
-            </div>
+            <ImageBox key={picture.id} {...picture} />
         )
     }
-}
 
-Gallery.propTypes = {
-    pictures: PropTypes.array
+    return (
+        <div className="gallery">
+            {
+                pictures.map(renderItem ? renderItem : renderItemDefault)
+            }
+        </div>
+    )
 }
