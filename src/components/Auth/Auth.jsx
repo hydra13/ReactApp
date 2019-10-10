@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 export class Auth extends Component {
 
-    state = { username: 'Marietta_Von24@gmail.com', password: 'qwerty' };
+    state = { username: 'Garrick_Hyatt15@yahoo.com', password: 'qwerty' };
 
     handleSighIn = () => {
         const { username, password } = this.state;
