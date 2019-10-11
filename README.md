@@ -8,3 +8,4 @@
 - WebPack
 - Babel
 - Scss
+- React
